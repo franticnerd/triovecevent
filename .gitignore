@@ -131,6 +131,7 @@ ENV/
 *.app
 
 
+*.class
 *.o
 ./release/embedding/GraphEmbed/hin2vec
 ./release/embedding/GraphEmbed/*.txt
