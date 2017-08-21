@@ -7,7 +7,7 @@ from zutils.datasets.twitter.pos_database import PosDatabase
 from zutils.datasets.twitter.tweet_database import TweetDatabase
 
 from params import *
-from word_distribution import WordEntropyProcessor
+from zutils.dto.text.word_distribution import WordEntropyProcessor
 
 
 def load_tweet_database(tweet_file):
@@ -30,8 +30,8 @@ def filter_by_pos_types(td, wd, comb, vocab_file, freq_thre, infreq_thre):
     td.apply_one_filter(emf)
 
 
-def filter_activity_tweets(td, grid_bin_list, word_entropy_file, activity_word_fraction):
-    wep = WordEntropyProcessor(td, grid_bin_list)
+def filter_activity_tweets(td, word_entropy_file, activity_word_fraction):
+    wep = WordEntropyProcessor(td)
     wep.calc(word_entropy_file)
     activity_words = wep.select_top_words(activity_word_fraction)
     cwf = ContainWordFilter(activity_words)
@@ -52,13 +52,12 @@ def run(pd):
     vocab_file = pd['data_dir'] + 'input/vocab.txt'
     filter_by_pos_types(td, wd, comb, vocab_file, freq_thre, infreq_thre)
 
-    grid_bin_list = [50, 50, 150]
     activity_word_fraction = 0.4
-    word_entropy_file = pd['data_dir'] + 'input/entropy.txt'
+    word_entropy_file = pd['data_dir'] + 'input/word_concentration.txt'
     directory = os.path.dirname(word_entropy_file)
     if not os.path.exists(directory):
         os.makedirs(directory)
-    filter_activity_tweets(td, grid_bin_list, word_entropy_file, activity_word_fraction)
+    filter_activity_tweets(td, word_entropy_file, activity_word_fraction)
 
     clean_tweet_file = pd['data_dir'] + 'input/tweets.txt'
     directory = os.path.dirname(clean_tweet_file)
