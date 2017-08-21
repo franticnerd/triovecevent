@@ -129,3 +129,8 @@ ENV/
 *.exe
 *.out
 *.app
+
+
+*.o
+./release/embedding/GraphEmbed/hin2vec
+./release/embedding/GraphEmbed/*.txt

@@ -1,0 +1,24 @@
+data_dir: &DIR ../../data/ny/
+tweet_file: !join [*DIR, input/tweets.txt]
+embedding_file: !join [*DIR, embeddings/embeddings.txt]
+model_dir: !join [*DIR, embeddings/]
+model_pickled_path: !join [*DIR, embeddings/pickled.model]
+model_embeddings_dir: !join [*DIR, embeddings/]
+voca_min: 0
+voca_max: 20000
+dim: 100
+negative: 1
+alpha: 0.02 # learning rate
+epoch: 50
+nt_list: ['w','l','t']
+predict_type: ['w', 'l', 't']
+test_size: 10000
+kernel_nb_num: 1 # used for efficiency reason (requested by fast k-nearest-neighbor search)
+bandwidth_l: 0.001 # used for detecting spatial hotpsots
+bandwidth_t: 1000.0 # used for detecting temporal hotpsots
+kernel_bandwidth_l: 0.001 # used for spatial smoothing
+kernel_bandwidth_t: 1000.0 # used for temporal smoothing
+second_order: 0
+use_context_vec: 1
+load_existing_model: 0
+
