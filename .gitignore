@@ -22,7 +22,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -133,5 +132,5 @@ ENV/
 
 *.class
 *.o
-./release/embedding/GraphEmbed/hin2vec
-./release/embedding/GraphEmbed/*.txt
+release/embedding/GraphEmbed/hin2vec
+release/embedding/GraphEmbed/*.txt
