@@ -52,7 +52,7 @@ def run(pd):
     vocab_file = pd['data_dir'] + 'input/vocab.txt'
     filter_by_pos_types(td, wd, comb, vocab_file, freq_thre, infreq_thre)
 
-    activity_word_fraction = 0.4
+    activity_word_fraction = 0.3
     word_entropy_file = pd['data_dir'] + 'input/word_concentration.txt'
     directory = os.path.dirname(word_entropy_file)
     if not os.path.exists(directory):
